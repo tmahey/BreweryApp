@@ -1,24 +1,28 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+rails server
+# To check table
+rails c
 
-* Ruby version
+State.column_names
 
-* System dependencies
+State.column_names
 
-* Configuration
+rails db:seed
+rails c
+State.count
+Brewery.count
 
-* Database creation
+# Testing Bootstrap / CSS Framework
+app/views/layouts/application.html.erb
 
-* Database initialization
+git status
 
-* How to run the test suite
+git remote add origin https://github.com/tmahey/BreweryApp.git
+git branch -M master
+git push -u origin master
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+git add .
+git commit -m "Describe what you changed"
+git push origin master
