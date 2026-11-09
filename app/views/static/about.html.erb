@@ -1,0 +1,74 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-lg-10 offset-lg-1">
+      <h1 class="mb-4">About the Brewery Directory Project</h1>
+      <p class="lead text-muted">
+        Welcome to the Ruby on Rails Brewery Application. This web application was built to explore, manage, and navigate geographic and facility data sourced from a live public API.
+      </p>
+
+      <hr class="my-4">
+
+      <!-- Section 1: Data Sources -->
+      <section class="mb-5">
+        <h2 class="h3 text-primary mb-3">1. Data Sources</h2>
+        <p>
+          The primary data for this application is pulled dynamically from the <strong>Open Brewery DB API</strong>. This public API provides comprehensive, structured information on breweries, microbreweries, brewpubs, and cideries across various regions.
+        </p>
+        <ul class="list-group list-group-flush mb-3">
+          <li class="list-group-item"><strong>API Endpoint:</strong> https://api.openbrewerydb.org/v1/breweries</li>
+          <li class="list-group-item"><strong>Data Format:</strong> JSON endpoints processed and imported into relational database records via a custom Ruby seed script.</li>
+          <li class="list-group-item"><strong>Volume:</strong> Over 200 total records populated across multiple states to ensure robust collection navigation and pagination.</li>
+        </ul>
+      </section>
+
+      <!-- Section 2: Data Structure & Integration -->
+      <section class="mb-5">
+        <h2 class="h3 text-primary mb-3">2. Data Structure & Integration</h2>
+        <p>
+          The application organizes data into two main relational models designed to maintain data integrity and avoid duplication:
+        </p>
+        <ul>
+          <li><strong>States Table:</strong> Acts as the parent entity holding unique state or region names.</li>
+          <li><strong>Breweries Table:</strong> Acts as the child entity holding specific facility details (such as brewery name, brewery type, city, address, phone number, and website URL) alongside a foreign key linking back to its respective state.</li>
+        </ul>
+        <p>
+          Data pulled from the API endpoints are parsed and mapped to establish a clean relational hierarchy where records from the child collection associate seamlessly with their parent category.
+        </p>
+      </section>
+
+      <!-- Section 3: Entity Relationship Diagram (ERD) Summary -->
+      <section class="mb-5">
+        <h2 class="h3 text-primary mb-3">3. Database ERD Summary</h2>
+        <p>
+          The underlying database architecture is structured around a classic <strong>One-to-Many ($1:N$)</strong> relationship:
+        </p>
+        <div class="card bg-light p-3 font-monospace mb-3">
+          <p class="mb-1"><strong>State</strong> (1) <---> has_many <---> (N) <strong>Brewery</strong></p>
+          <p class="mb-0 text-muted small">Foreign Key: <code>breweries.state_id</code> references <code>states.id</code></p>
+        </div>
+        <p>
+          This relationship enables bi-directional hierarchical navigation, allowing users to view all associated breweries from a specific state's show page or jump directly back to a state's details from any individual brewery page.
+        </p>
+      </section>
+
+      <!-- Section 4: Project Features -->
+      <section class="mb-4">
+        <h2 class="h3 text-primary mb-3">4. Application Features</h2>
+        <p>This application implements complete CRUD navigation features including:</p>
+        <ul class="row">
+          <li class="col-md-6">High-level collection views and individual member pages</li>
+          <li class="col-md-6">Multi-model associated data display</li>
+          <li class="col-md-6">Hierarchical category navigation</li>
+          <li class="col-md-6">Pagination for large collections</li>
+          <li class="col-md-6">Simple text search and dropdown filtering</li>
+          <li class="col-md-6">Responsive grid layout</li>
+        </ul>
+      </section>
+
+      <div class="mt-4">
+        <%= link_to "Browse States", states_path, class: "btn btn-primary me-2" %>
+        <%= link_to "Browse Breweries", breweries_path, class: "btn btn-outline-secondary" %>
+      </div>
+    </div>
+  </div>
+</div>

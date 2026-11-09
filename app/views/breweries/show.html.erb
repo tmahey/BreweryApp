@@ -1,0 +1,25 @@
+<h1><%= @brewery.name %></h1>
+<p><strong>Type:</strong> <%= @brewery.brewery_type %></p>
+<p><strong>City:</strong> <%= @brewery.city %></p>
+
+<!-- Displaying associated model data -->
+<p><strong>State:</strong> <%= link_to @brewery.state.name, state_path(@brewery.state) %></p>
+
+<div class="container mt-4">
+  <h1><%= @brewery.name %></h1>
+  <p><strong>Type:</strong> <%= @brewery.brewery_type %></p>
+  <p><strong>City:</strong> <%= @brewery.city %></p>
+  <p><strong>State:</strong> <%= link_to @brewery.state.name, state_path(@brewery.state) %></p>
+
+  <!-- Feature 5.2: ERB Conditional -->
+  <p>
+    <strong>Website:</strong> 
+    <% if @brewery.website_url.present? %>
+      <%= link_to "Visit Website", @brewery.website_url, target: "_blank" %>
+    <% else %>
+      <span class="text-muted">No website available</span>
+    <% end %>
+  </p>
+
+  <%= link_to "Back to Breweries", breweries_path, class: "btn btn-secondary mt-3" %>
+</div>

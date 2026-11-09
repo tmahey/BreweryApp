@@ -1,0 +1,10 @@
+<h1>All States</h1>
+
+<ul>
+  <% @states.each do |state| %>
+    <li>
+      <!-- This creates a clickable link to each individual state's show page -->
+      <%= link_to state.name, state_path(state) %>
+    </li>
+  <% end %>
+</ul>

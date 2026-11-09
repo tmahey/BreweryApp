@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  get "breweries/index"
+  get "breweries/show"
+  get "states/index"
+  get "states/show"
+  root "static#about"
+  get "about", to: "static#about"
+  get "static/about"
+
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -8,6 +17,9 @@ Rails.application.routes.draw do
   # Render dynamic PWA files from app/views/pwa/*
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+
+  resources :states, only: [ :index, :show ]
+  resources :breweries, only: [ :index, :show ]
 
   # Defines the root path route ("/")
   # root "posts#index"

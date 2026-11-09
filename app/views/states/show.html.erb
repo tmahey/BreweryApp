@@ -1,0 +1,11 @@
+<h1>Breweries in <%= @state.name %></h1>
+
+<ul>
+  <% @state.breweries.each do |brewery| %>
+    <li>
+      <%= link_to brewery.name, brewery_path(brewery) %> (<%= brewery.city %>)
+    </li>
+  <% end %>
+</ul>
+
+<p><%= link_to "Back to All States", states_path %></p>
