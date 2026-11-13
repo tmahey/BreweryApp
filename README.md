@@ -24,5 +24,7 @@ git branch -M master
 git push -u origin master
 
 git add .
-git commit -m "Describe what you changed"
+git commit -m "Msg"
 git push origin master
+
+git log --oneline

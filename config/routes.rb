@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   get "breweries/show"
   get "states/index"
   get "states/show"
-  root "static#about"
+  root "breweries#index"
+
   get "about", to: "static#about"
   get "static/about"
 
